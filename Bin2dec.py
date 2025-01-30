@@ -7,11 +7,26 @@ def binary_to_decimal(binary_str):
     decimal_value = int(binary_str, 2)
     return f"Decimal Equivalent: {decimal_value}"
 
-# Get user input
-binary_input = input("Enter a binary number (up to 8 digits): ")
+def decimal_to_binary(decimal_str):
+    # Validate input: Only numeric values allowed
+    if not decimal_str.isdigit():
+        return "Error: Only numeric values are allowed."
+    
+    # Convert decimal to binary using bin()
+    binary_value = bin(int(decimal_str))[2:]
+    return f"Binary Equivalent: {binary_value}"
 
-# Limit input length to 8 characters
-if len(binary_input) > 8:
-    print("Error: Input must be at most 8 binary digits.")
+# Get user choice
+choice = input("Choose conversion type:\n1. Binary to Decimal\n2. Decimal to Binary\nEnter 1 or 2: ")
+
+if choice == "1":
+    binary_input = input("Enter a binary number (up to 8 digits): ")
+    if len(binary_input) > 8:
+        print("Error: Input must be at most 8 binary digits.")
+    else:
+        print(binary_to_decimal(binary_input))
+elif choice == "2":
+    decimal_input = input("Enter a decimal number: ")
+    print(decimal_to_binary(decimal_input))
 else:
-    print(binary_to_decimal(binary_input))
+    print("Error: Invalid choice. Please enter 1 or 2.")
